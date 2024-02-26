@@ -1,0 +1,8 @@
+# ------- Função para importar planilha gsheet
+def import_gsheet(sheet_id:str, sheet_name:str,skiprows=0):
+    # sheet_id - link de compartilhamento
+    # sheet_name - nome da aba
+    # obs: nomes da planilha e arquivo nao pode ter espaço, nem caracteres especiais
+    # compartilhar o link como qualquer pessoa com o link pode editar
+    url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}'
+    return pd.read_csv(url, engine= 'python', encoding="utf8", skiprows = skiprows, header=0)
